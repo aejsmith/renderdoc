@@ -531,6 +531,8 @@ HRESULT WrappedID3D12Device::QueryInterface(REFIID riid, void **ppvObject)
 
 void WrappedID3D12Device::ApplyInitialContents()
 {
+  SCOPED_TIMER("WrappedID3D12Device::ApplyInitialContents");
+
   initStateCurBatch = 0;
   initStateCurList = NULL;
 
@@ -2229,6 +2231,8 @@ void WrappedID3D12Device::ReadLogInitialisation()
 void WrappedID3D12Device::ReplayLog(uint32_t startEventID, uint32_t endEventID,
                                     ReplayLogType replayType)
 {
+  SCOPED_TIMER("WrappedID3D12Device::ReplayLog");
+
   uint64_t offs = m_FrameRecord.frameInfo.fileOffset;
 
   m_pSerialiser->SetOffset(offs);
